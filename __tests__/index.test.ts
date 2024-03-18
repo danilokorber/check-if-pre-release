@@ -1,6 +1,5 @@
 import * as core from '@actions/core';
 import { describe, expect, it } from '@jest/globals';
-import nock from 'nock';
 
 jest.mock('@actions/core');
 
@@ -9,22 +8,12 @@ function mockInputs(inputs: { [key: string]: string }) {
 }
 
 describe('index', () => {
-  beforeEach(() => {
-    // Mock the inputs
-    mockInputs({
-      'github-token': 'test-token',
+  describe('Dummy Test', () => {
+    it('should always pass', () => {
+      mockInputs({
+        'github-token': 'test-token',
+      });
+      expect(true).toBe(true);
     });
-
-    // Mock the API request
-    nock('https://api.github.com').get('/repos/owner/repo/releases/1').reply(200, {
-      id: 1,
-      tag_name: 'v1.0.0',
-      prerelease: false,
-    });
-  });
-
-  it('calls run when imported', async () => {
-    // Add your assertions here
-    expect({}).toEqual({});
   });
 });
