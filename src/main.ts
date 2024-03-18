@@ -25,31 +25,34 @@ export async function run(): Promise<void> {
       repo,
       release_id: release.id,
     });
-
     if (prerelease) {
-      console.log('The current release is a pre-release');
+      core.setOutput('release_type', 'PRE_RELEASE');
+      core.setOutput('has_pre_release', prerelease.toString());
+      core.info('The current release is a pre-release');
       const { data: releases } = await octokit.rest.repos.listReleases({
         owner,
         repo,
       });
       const previousPreRelease = releases.find((r) => r.prerelease && r.id !== release.id);
       if (previousPreRelease) {
-        console.log(`The previous pre-release was ${previousPreRelease.tag_name}`);
+        core.info(`The previous pre-release was ${previousPreRelease.tag_name}`);
       } else {
-        console.log('There was no previous pre-release');
+        core.info('There was no previous pre-release');
       }
     } else {
-      console.log('The current release is not a pre-release');
+      core.setOutput('release_type', 'RELEASE');
+      core.info('The current release is not a pre-release');
       const { data: releases } = await octokit.rest.repos.listReleases({
         owner,
         repo,
         per_page: 2,
       });
       const previousRelease = releases.find((r) => !r.prerelease && r.id !== release.id);
+      core.setOutput('has_pre_release', previousRelease !== undefined);
       if (previousRelease) {
-        console.log(`The previous release was ${previousRelease.tag_name}`);
+        core.info(`The previous release was ${previousRelease.tag_name}`);
       } else {
-        console.log('There was no previous release');
+        core.info('There was no previous release');
       }
     }
   } catch (error) {
