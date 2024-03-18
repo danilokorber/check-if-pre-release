@@ -61,7 +61,7 @@ jobs:
         id: test-action
         uses: ./
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.DUMMY_SECRET }}
 
       - name: Print Output
         id: output
