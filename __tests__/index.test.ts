@@ -6,6 +6,7 @@ jest.mock('@actions/core');
 describe('index', () => {
   beforeEach(() => {
     const token = core.getInput('github-token');
+    core.info(token.toString());
     jest.mock('@actions/core');
   });
 
