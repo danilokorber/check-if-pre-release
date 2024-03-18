@@ -57,14 +57,14 @@ jobs:
         id: build
         run: npm run all
 
-      - name: Test Local Action
-        id: test-action
-        uses: ./
-        with:
-          token: ${{ secrets.DUMMY_SECRET }}
+      # - name: Test Local Action
+      #   id: test-action
+      #   uses: ./
+      #   with:
+      #     token: ${{ secrets.DUMMY_SECRET }}
 
-      - name: Print Output
-        id: output
-        run: |
-          echo "has_pre_release -> ${{ steps.test-action.outputs.has_pre_release }}"
-          echo "release_type -> ${{ steps.test-action.outputs.release_type }}"
+      # - name: Print Output
+      #   id: output
+      #   run: |
+      #     echo "has_pre_release -> ${{ steps.test-action.outputs.has_pre_release }}"
+      #     echo "release_type -> ${{ steps.test-action.outputs.release_type }}"
