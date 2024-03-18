@@ -3,7 +3,7 @@ import { describe, expect, it } from '@jest/globals';
 
 jest.mock('@actions/core');
 
-function mockInputs(inputs: { [key: string]: string }) {
+function mockInputs(inputs: { [key: string]: string }): void {
   jest.mocked(core.getInput).mockImplementation((s) => inputs[s] || '');
 }
 
