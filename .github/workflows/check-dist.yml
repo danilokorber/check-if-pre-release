@@ -19,9 +19,6 @@ on:
     paths-ignore:
       - '**.md'
 
-permissions:
-  contents: read
-
 jobs:
   build:
     name: Build
