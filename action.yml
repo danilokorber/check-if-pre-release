@@ -12,7 +12,6 @@ inputs:
   github-token:
     description: 'Should be ${{ secrets.GITHUB_TOKEN }}'
     required: true
-    default: ${{ secrets.GITHUB_TOKEN }}
 
 # Define your outputs here.
 outputs:
