@@ -10,7 +10,7 @@ branding:
 # Define your inputs here.
 inputs:
   github-token:
-    description: 'Should be ${{ secrets.GITHUB_TOKEN }}'
+    description: 'Should be \$\{\{ secrets.GITHUB_TOKEN \}\}'
     required: true
 
 # Define your outputs here.
