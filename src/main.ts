@@ -42,6 +42,7 @@ export async function run(): Promise<void> {
     } else {
       core.setOutput('release_type', 'RELEASE');
       core.info('The current release is not a pre-release');
+
       const { data: releases } = await octokit.rest.repos.listReleases({
         owner,
         repo,
