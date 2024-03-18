@@ -1,6 +1,6 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Checks if a release had a previous pre-release'
+description: 'Checks if a release had a previous pre-release'
+author: 'Danilo Körber'
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
@@ -16,8 +16,10 @@ inputs:
 
 # Define your outputs here.
 outputs:
-  time:
-    description: 'Your output description here'
+  has_pre_release:
+    description: '[boolean] If the release had a previous pre-release'
+  release_type:
+    description: '[RELEASE | PRE-RELEASE] The type of the current release'
 
 runs:
   using: node20
