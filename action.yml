@@ -19,6 +19,10 @@ outputs:
     description: '[boolean] If the release had a previous pre-release'
   release:
     description: '[json] The current release'
+  prerelease:
+    description: '[json] The current prerelease'
+  releases:
+    description: '[json] All releases'
   release_type:
     description: '[RELEASE | PRE_RELEASE] The type of the current release'
 
