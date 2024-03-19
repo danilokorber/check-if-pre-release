@@ -17,6 +17,8 @@ inputs:
 outputs:
   has_pre_release:
     description: '[boolean] If the release had a previous pre-release'
+  release:
+    description: '[?] The current release'
   release_type:
     description: '[RELEASE | PRE_RELEASE] The type of the current release'
 
