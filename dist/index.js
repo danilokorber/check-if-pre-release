@@ -29031,7 +29031,6 @@ async function run() {
         });
         if (prerelease) {
             core.setOutput('release_type', 'PRE_RELEASE');
-            core.setOutput('has_pre_release', prerelease.toString());
             core.info('The current release is a pre-release');
             const { data: releases } = await octokit.rest.repos.listReleases({
                 owner,
@@ -29039,9 +29038,11 @@ async function run() {
             });
             const previousPreRelease = releases.find((r) => r.prerelease && r.id !== release.id);
             if (previousPreRelease) {
+                core.setOutput('has_pre_release', true);
                 core.info(`The previous pre-release was ${previousPreRelease.tag_name}`);
             }
             else {
+                core.setOutput('has_pre_release', false);
                 core.info('There was no previous pre-release');
             }
         }
