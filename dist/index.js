@@ -29019,6 +29019,7 @@ async function run() {
         // Get the current release
         const { owner, repo } = github.context.repo;
         const release = github.context.payload.release;
+        core.setOutput('release', release);
         if (!release) {
             throw new Error('This action can only be triggered by a release');
         }
