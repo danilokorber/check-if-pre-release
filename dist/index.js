@@ -29029,6 +29029,7 @@ async function run() {
             repo,
             release_id: release.id,
         });
+        core.setOutput('prerelease', prerelease);
         if (prerelease) {
             core.setOutput('release_type', 'PRE_RELEASE');
             core.info('The current release is a pre-release');
@@ -29036,6 +29037,7 @@ async function run() {
                 owner,
                 repo,
             });
+            core.setOutput('releases', releases);
             const previousPreRelease = releases.find((r) => r.prerelease && r.id !== release.id);
             if (previousPreRelease) {
                 core.setOutput('has_pre_release', true);
@@ -29054,12 +29056,15 @@ async function run() {
                 repo,
                 per_page: 2,
             });
+            core.setOutput('releases', releases);
             const previousRelease = releases.find((r) => !r.prerelease && r.id !== release.id);
             core.setOutput('has_pre_release', previousRelease !== undefined);
             if (previousRelease) {
+                core.setOutput('has_pre_release', true);
                 core.info(`The previous release was ${previousRelease.tag_name}`);
             }
             else {
+                core.setOutput('has_pre_release', false);
                 core.info('There was no previous release');
             }
         }
